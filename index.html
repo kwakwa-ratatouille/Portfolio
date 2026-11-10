@@ -1,0 +1,553 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Matis Rodrigues Photographie</title><meta name="description" content="Matis Rodrigues, photographe à Tours : sport, spectacle, reportage."><style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style></head><body>
+<title>Matis Rodrigues Photographie</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : une feuille de match. Une pellicule pleine largeur en tête, puis des tableaux alignés sur 12 colonnes. */
+:root{
+  --stone:#e2e1dc;      /* fond : gris pierre froid */
+  --stone-2:#d6d5cf;    /* filets, zones secondaires */
+  --ink:#141413;        /* texte */
+  --ink-2:#5d5c57;      /* texte secondaire */
+  --booth:#0d0d0c;      /* la régie, la pellicule */
+  --booth-ink:#e9e8e3;
+  --tungsten:#e0901a;   /* tête de lecture, publications */
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --gutter:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --pub:#8a5200;        /* mention « publiée » sur fond clair */
+  --field:#bdbcb6;
+  color-scheme:light;
+}
+/* les pages série se regardent dans le noir, comme la pellicule de l'accueil */
+:root.dark{--stone:#0d0d0c;--stone-2:#2a2a27;--ink:#e9e8e3;--ink-2:#a3a29c;--pub:#e0901a}
+main img{opacity:0;transition:opacity .7s ease}
+main img.ld{opacity:1}
+*{box-sizing:border-box}
+body{background:var(--stone);color:var(--ink);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--stone)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--tungsten);outline-offset:3px}
+.wrap{padding-left:var(--gutter);padding-right:var(--gutter-r);max-width:1480px;margin-inline:auto}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.grid12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+
+/* ---------- en-tête ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--stone);border-bottom:1px solid var(--stone-2)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
+.brand{display:flex;align-items:baseline;gap:14px;text-decoration:none;min-width:0;flex:1 1 auto}
+.brand b{font:800 22px/1 var(--f-display);text-transform:uppercase;letter-spacing:.01em;white-space:nowrap}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.nav{display:flex;gap:22px;align-items:center;flex:0 0 auto}
+.nav a{text-decoration:none;font-weight:500;font-size:15px;position:relative;white-space:nowrap}
+.nav a[aria-current="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--tungsten)}
+.nav .cta{background:var(--ink);color:var(--stone);padding:8px 14px;border-radius:2px;transition:background-color .2s,color .2s}
+.nav .cta:hover{background:var(--tungsten);color:#141413}
+@media (max-width:1000px){.brand span{display:none}}
+@media (max-width:560px){.nav{gap:14px}.nav a{font-size:14px}.nav .hide-s{display:none}}
+
+/* ---------- héros : la pellicule du match ---------- */
+.hero{background:var(--booth);color:var(--booth-ink);padding-block:22px 26px}
+.hero-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px 24px;flex-wrap:wrap;margin-bottom:16px}
+.hero-top h1{font:800 clamp(30px,3.4vw,46px)/1 var(--f-display);text-transform:uppercase;margin:0}
+.hero-top .mono{color:#a9a8a2}
+.reel{position:relative;overflow:hidden;height:min(64vh,620px);touch-action:pan-y}
+.track{display:flex;gap:10px;height:100%;will-change:transform;transition:transform .9s cubic-bezier(.6,0,.25,1)}
+.track figure{margin:0;height:100%;flex:0 0 auto;position:relative;cursor:pointer;opacity:.38;transition:opacity .6s}
+.track figure.cur{opacity:1}
+.track img{height:100%;width:auto;display:block;background:#1a1a18}
+.reel-meta{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-top:16px;align-items:end}
+.readout{grid-column:1 / span 7;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.readout div{display:grid;gap:2px;border-top:1px solid #2e2e2a;padding-top:8px;min-width:0}
+.readout small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8d8c86}
+.readout b{font-weight:500;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.readout .clock b{font:700 30px/1 var(--f-display);letter-spacing:.02em}
+.controls{grid-column:9 / span 4;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.btn-b{background:transparent;border:1px solid #3b3b37;color:var(--booth-ink);padding:8px 12px;border-radius:2px;cursor:pointer;font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;text-decoration:none;display:inline-block}
+.btn-b:hover{border-color:var(--booth-ink)}
+.btn-b.solid{background:var(--booth-ink);color:var(--booth);border-color:var(--booth-ink)}
+.timeline{margin-top:18px}
+.bar{position:relative;height:40px;cursor:pointer;touch-action:none;border-top:1px solid #2e2e2a;border-bottom:1px solid #2e2e2a}
+.bar .keep{position:absolute;top:8px;bottom:8px;width:2px;background:#5a5a54;transition:background .3s}
+.bar .keep.on{background:var(--tungsten)}
+.bar .head{position:absolute;top:-5px;bottom:-5px;width:1px;background:var(--booth-ink);transition:left .9s cubic-bezier(.6,0,.25,1)}
+.bar .head::before{content:"";position:absolute;top:0;left:-4px;border:4.5px solid transparent;border-top-color:var(--booth-ink)}
+.hours{display:flex;justify-content:space-between;color:#8d8c86;margin-top:6px}
+@media (max-width:980px){.readout{grid-column:1 / -1}.controls{grid-column:1 / -1;justify-content:flex-start}.reel{height:min(56vh,520px)}}
+@media (max-width:560px){.readout{grid-template-columns:repeat(2,minmax(0,1fr))}.readout .clock b{font-size:24px}.reel{height:58vh}}
+
+/* intro sous la pellicule */
+.intro{padding-block:44px 52px}
+.intro p{grid-column:1 / span 7;margin:0;font:500 clamp(22px,2.3vw,32px)/1.25 var(--f-body);letter-spacing:-.01em;text-wrap:balance}
+.intro .acts{grid-column:9 / span 4;display:flex;gap:10px;align-items:end;justify-content:flex-end;flex-wrap:wrap}
+@media (max-width:900px){.intro p,.intro .acts{grid-column:1 / -1;justify-content:flex-start}}
+
+/* ---------- sections ---------- */
+section.block{padding-block:56px 64px;border-top:1px solid var(--stone-2)}
+.sec-head{margin-bottom:28px;align-items:end}
+.sec-head h2{grid-column:1 / span 6;font:800 clamp(36px,4.6vw,64px)/.92 var(--f-display);text-transform:uppercase;margin:0}
+.sec-head p{grid-column:8 / span 5;margin:0;color:var(--ink-2);max-width:46ch}
+@media (max-width:820px){.sec-head h2,.sec-head p{grid-column:1 / -1}}
+.btn{background:var(--ink);color:var(--stone);border:0;padding:10px 15px;border-radius:2px;cursor:pointer;font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn,.btn-b{transition:background-color .2s,color .2s,border-color .2s}
+.btn:not(.ghost):hover{background:var(--tungsten);color:#141413}
+.btn.ghost:hover{background:var(--ink);color:var(--stone)}
+
+/* index des séries : une planche de couvertures */
+.index{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 24px}
+.index a{display:grid;gap:6px;text-decoration:none;min-width:0}
+.index .cov{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--stone-2);margin-bottom:8px}
+.index .cov img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .7s ease,transform 1.1s cubic-bezier(.2,.6,.2,1)}
+.index a:hover .cov img,.index a:focus-visible .cov img{transform:scale(1.035)}
+.index .m{display:flex;justify-content:space-between;gap:10px;color:var(--ink-2)}
+.index .t{font:800 clamp(24px,2.9vw,44px)/.95 var(--f-display);text-transform:uppercase;justify-self:start;background:linear-gradient(var(--tungsten),var(--tungsten)) 0 100%/0 3px no-repeat;transition:background-size .35s ease;padding-bottom:4px}
+.index a:hover .t,.index a:focus-visible .t{background-size:100% 3px}
+.index .s{color:var(--ink-2);font-size:15px}
+@media (max-width:900px){.index{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}}
+@media (max-width:520px){.index .m span:last-child,.index .s{display:none}.index{gap:26px 12px}}
+
+/* Instagram : une rangée de vignettes */
+.pubs{list-style:none;margin:0;padding:0 0 6px;display:flex;gap:16px;overflow-x:auto;scrollbar-width:thin}
+.pubs li{flex:1 0 150px;min-width:0;max-width:220px}
+.pubs a{display:grid;gap:4px;text-decoration:none}
+.pubs .th{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--stone-2);margin-bottom:6px}
+.pubs img{width:100%;height:100%;object-fit:cover;display:block}
+.pubs .d{color:var(--ink-2)}
+.pubs .w{font-weight:500;font-size:14px;line-height:1.3}
+.pubs a:hover .w{text-decoration:underline;text-underline-offset:3px}
+
+/* conditions */
+.terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.term{padding:20px 24px 26px 0;border-bottom:1px solid var(--stone-2);display:grid;gap:8px;align-content:start;min-width:0}
+.term + .term{padding-left:24px;border-left:1px solid var(--stone-2)}
+.term:nth-child(3n+1){padding-left:0;border-left:0}
+.term h3{margin:0;font:700 24px/1.05 var(--f-display);text-transform:uppercase}
+.term p{margin:0;max-width:40ch}
+@media (max-width:900px){.terms{grid-template-columns:minmax(0,1fr)}.term,.term + .term{padding:18px 0;border-left:0}}
+
+/* ---------- page série ---------- */
+.s-head{padding-block:28px 44px;align-items:start;row-gap:20px}
+.s-head .back{grid-column:1 / -1;text-decoration:none;color:var(--ink-2)}
+.s-head .back:hover{color:var(--ink)}
+.s-head h1{grid-column:1 / span 7;font:800 clamp(52px,8vw,128px)/.86 var(--f-display);text-transform:uppercase;margin:0;text-wrap:balance}
+.s-head .sub{grid-column:1 / span 6;margin:0;font-size:18px;max-width:52ch}
+.s-head .facts{grid-column:1 / span 6}
+.s-head .cover{grid-column:8 / span 5;grid-row:2 / span 3;margin:0;cursor:zoom-in}
+.s-head .cover img{width:100%;height:auto;max-height:82vh;object-fit:cover;display:block;background:var(--stone-2)}
+@media (max-width:900px){.s-head h1,.s-head .sub,.s-head .facts,.s-head .cover{grid-column:1 / -1;grid-row:auto}.s-head .cover{order:3}.s-head .facts{order:4}}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;margin:0;border-top:1px solid var(--stone-2);padding-top:16px}
+.facts dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);padding-top:3px}
+.facts dd{margin:0;font-variant-numeric:tabular-nums}
+/* planche : rangées de même hauteur, dans l'ordre de prise de vue */
+.gallery{--rh:430px;display:flex;flex-wrap:wrap;gap:26px 14px;padding-bottom:56px}
+.gallery figure{margin:0;min-width:0;cursor:zoom-in}
+.gallery img{width:100%;height:auto;display:block;background:var(--stone-2)}
+.gallery figcaption{display:flex;justify-content:space-between;gap:10px;padding-top:7px;color:var(--ink-2)}
+.gallery .fill{flex:1000 1 0}
+@media (max-width:1100px){.gallery{--rh:340px}}
+@media (max-width:640px){.gallery{--rh:210px;gap:18px 8px}}
+.ig{color:var(--pub)}
+.next{display:flex;justify-content:space-between;align-items:end;gap:20px;padding-block:28px 64px;border-top:1px solid var(--ink);text-decoration:none}
+.next b{font:800 clamp(40px,6vw,84px)/.9 var(--f-display);text-transform:uppercase}
+.next:hover b{color:var(--tungsten)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:80;background:var(--booth);color:var(--booth-ink);display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:calc(12px + env(safe-area-inset-top,0px)) var(--gutter-r) calc(12px + env(safe-area-inset-bottom,0px)) var(--gutter)}
+.lb{animation:fadein .25s}
+.lb img{width:100%;height:100%;object-fit:contain;display:block;min-height:0;opacity:0;transition:opacity .3s}
+.lb img.ld{opacity:1}
+.lb .bar-l{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:6px;flex-wrap:wrap}
+.lb .bar-l .mono{color:#a9a8a2}
+
+/* ---------- contact ---------- */
+.c-grid{padding-block:36px 72px}
+.c-left{grid-column:1 / span 5;display:grid;gap:26px;align-content:start}
+.c-left h1{font:800 clamp(52px,7vw,110px)/.86 var(--f-display);text-transform:uppercase;margin:0}
+.mail{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.mail output{font:600 clamp(18px,2vw,24px)/1.2 var(--f-body);user-select:all;word-break:break-all}
+.links{display:grid;border-top:1px solid var(--ink)}
+.links a{display:flex;justify-content:space-between;gap:12px;padding-block:12px;border-bottom:1px solid var(--stone-2);text-decoration:none}
+.links a:hover span:first-child{text-decoration:underline;text-underline-offset:3px}
+.c-form{grid-column:7 / span 6;display:grid;gap:18px;background:var(--stone-2);padding:24px;border-radius:3px;min-width:0;align-content:start}
+.c-form h2{margin:0;font:700 30px/1 var(--f-display);text-transform:uppercase}
+.c-form p{margin:0;color:var(--ink-2)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{display:grid;gap:5px;min-width:0}
+.field > label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.field input,.field select{font:inherit;background:var(--stone);border:1px solid var(--field);border-radius:2px;padding:9px 10px;color:var(--ink);width:100%;min-width:0}
+.field input::placeholder{color:#8d8c86}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{font-size:14px;color:var(--ink);border:1px solid var(--field);padding:6px 10px;border-radius:2px;cursor:pointer;display:flex;gap:6px;align-items:center;white-space:nowrap}
+.chips input{accent-color:var(--ink)}
+.msg{background:var(--booth);color:var(--booth-ink);padding:16px;border-radius:2px;white-space:pre-wrap;font-family:var(--f-mono);font-size:12.5px;line-height:1.6;margin:0;min-height:140px;overflow-wrap:anywhere}
+.msg .ph{color:#8d8c86}
+.copied{font-family:var(--f-mono);font-size:12px;color:var(--ink-2)}
+@media (max-width:900px){.c-left,.c-form{grid-column:1 / -1}.row2{grid-template-columns:minmax(0,1fr)}}
+
+footer{border-top:1px solid var(--ink);padding-block:22px 34px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+footer nav{display:flex;gap:18px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- transition : le rideau de régie ---------- */
+.curtain{position:fixed;inset:0;z-index:90;background:var(--booth);color:var(--booth-ink);display:grid;place-items:center;transform:scaleY(0);transform-origin:bottom;pointer-events:none}
+.curtain span{font:800 clamp(40px,8vw,120px)/.9 var(--f-display);text-transform:uppercase;opacity:0;padding-inline:16px;text-align:center}
+.curtain small{position:absolute;left:var(--gutter);bottom:calc(18px + env(safe-area-inset-bottom,0px));font-family:var(--f-mono);font-size:12px;color:#a9a8a2;opacity:0}
+.curtain.in{animation:cin .38s cubic-bezier(.7,0,.3,1) forwards}
+.curtain.in span,.curtain.in small{animation:fadein .2s .2s forwards}
+.curtain.out{transform:scaleY(1);transform-origin:top;animation:cout .45s cubic-bezier(.7,0,.3,1) forwards}
+.curtain.out span,.curtain.out small{opacity:1;animation:fadeout .15s forwards}
+@keyframes cin{to{transform:scaleY(1)}}
+@keyframes cout{to{transform:scaleY(0)}}
+@keyframes fadein{to{opacity:1}}
+@keyframes fadeout{to{opacity:0}}
+@media (prefers-reduced-motion:reduce){.curtain{display:none}.track,.bar .head,main img,.index .cov img,.lb img{transition:none}.lb{animation:none}}
+</style>
+
+<div class="curtain" id="curtain" aria-hidden="true"><span id="curtain-t"></span><small id="curtain-s"></small></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#accueil"><b>Matis Rodrigues</b><span class="label">Photographe · sport, spectacle, reportage · Tours</span></a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="#series" data-nav="series">Séries</a>
+      <a href="#conditions" data-nav="conditions" class="hide-s">Conditions</a>
+      <a href="#contact" data-nav="contact" class="cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="view"></main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">© Matis Rodrigues 2026 · Tours, Centre-Val de Loire</span>
+    <nav aria-label="Réseaux">
+      <a class="mono" href="https://www.instagram.com/matis.rds/" target="_blank" rel="noopener">Instagram ↗</a>
+      <a class="mono" href="https://www.tiktok.com/@kwakwa.rm" target="_blank" rel="noopener">TikTok ↗</a>
+      <a class="mono" href="https://www.linkedin.com/in/matis-rodrigues/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </nav>
+  </div>
+</footer>
+
+<template id="tpl-home">
+  <section class="hero" aria-label="Tournoi NBA Gas’Paname, images livrées">
+    <div class="wrap">
+      <div class="hero-top">
+        <h1>NBA Gas’Paname · Juvisy-sur-Orge</h1>
+        <span class="mono" id="h-sub"></span>
+      </div>
+    </div>
+    <div class="reel" id="reel"><div class="track" id="track"></div></div>
+    <div class="wrap">
+      <div class="timeline">
+        <div class="bar" id="bar" role="slider" tabindex="0" aria-label="Heure dans le tournoi" aria-valuemin="1" aria-valuenow="1"><div class="head" id="head"></div></div>
+        <div class="hours mono" id="hours"></div>
+      </div>
+      <div class="reel-meta">
+        <div class="readout">
+          <div class="clock"><small>Heure</small><b id="r-time">--:--</b></div>
+          <div><small>Image</small><b id="r-n">—</b></div>
+          <div><small>Exposition</small><b id="r-exp">—</b></div>
+          <div><small>Focale</small><b id="r-fl">—</b></div>
+        </div>
+        <div class="controls">
+          <button class="btn-b" id="b-prev" type="button" aria-label="Image précédente">←</button>
+          <button class="btn-b" id="b-play" type="button">Pause</button>
+          <button class="btn-b" id="b-next" type="button" aria-label="Image suivante">→</button>
+          <a class="btn-b solid" href="#mada">Voir la série</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap intro grid12">
+    <p>Je couvre vos matchs, concerts et événements du début à la fin, et je vous livre une sélection retouchée, classée par heure.</p>
+    <div class="acts"><a class="btn" href="#contact">Me proposer un événement</a><a class="btn ghost" href="#series">Voir les séries</a></div>
+  </div>
+
+  <section class="block" id="series-sec">
+    <div class="wrap">
+      <div class="sec-head grid12">
+        <h2>Séries</h2>
+        <p>Six événements couverts en 2026. Dates, horaires et réglages sont lus dans les fichiers.</p>
+      </div>
+      <ul class="index" id="index"></ul>
+    </div>
+  </section>
+
+  <section class="block" id="pubs-sec">
+    <div class="wrap">
+      <div class="sec-head grid12">
+        <h2>Sur Instagram</h2>
+        <p>Sept carrousels publiés sur <a href="https://www.instagram.com/matis.rds/" target="_blank" rel="noopener">@matis.rds</a> depuis juin 2026. Dans chaque série, ces images sont marquées « publiée ».</p>
+      </div>
+      <ul class="pubs" id="pubs"></ul>
+    </div>
+  </section>
+
+  <section class="block" id="conditions-sec">
+    <div class="wrap">
+      <div class="sec-head grid12">
+        <h2>Ce que vous recevez</h2>
+        <p>Pour une salle, un club ou une association : avant, pendant et après l'événement.</p>
+      </div>
+      <div class="terms">
+        <div class="term"><span class="label">Sélection</span><h3>Triée et retouchée</h3><p id="t-sel">Pas de doublons ni d'images floues à trier : uniquement les images retenues, retouchées et classées par heure.</p></div>
+        <div class="term"><span class="label">Délai</span><h3>Sous 48 h</h3><p>Galerie en ligne avec téléchargement. Quelques images le soir même pour vos réseaux si besoin.</p></div>
+        <div class="term"><span class="label">Formats</span><h3>JPEG pleine définition + 4:5</h3><p>Une version haute définition pour la presse et l'impression, une version recadrée 4:5 pour Instagram.</p></div>
+        <div class="term"><span class="label">Droits</span><h3>Usage communication inclus</h3><p>Site, réseaux sociaux et dossiers de presse de l'organisateur. Crédit : © Matis Rodrigues.</p></div>
+        <div class="term"><span class="label">Matériel</span><h3>Deux boîtiers, f/2 à f/2.8</h3><p class="mono" style="font-size:13px">Sony A7 III · Sony A6700<br>Samyang 35-150 mm f/2-2.8<br>Tamron 28-75 mm f/2.8<br>Sigma 18-50 mm f/2.8</p></div>
+        <div class="term"><span class="label">Sur place</span><h3>Sans flash, sans gêner</h3><p>Je respecte les zones et créneaux photo fixés par l'organisation. À l'Opéra Garnier, prise de vue jusqu'à ISO 32 000 sans éclairage d'appoint.</p></div>
+      </div>
+      <div class="grid12" style="margin-top:28px;align-items:baseline">
+        <span class="label" style="grid-column:1 / span 2">Référence</span>
+        <p style="margin:0;grid-column:3 / span 8;max-width:70ch">École de production Maurice Leroux, Tours : alternance en communication depuis avril 2026. Reportages photo des ateliers, sorties et événements de l'école, publiés sur ses réseaux.</p>
+      </div>
+    </div>
+  </section>
+</template>
+
+<template id="tpl-contact">
+  <div class="wrap c-grid grid12">
+    <div class="c-left">
+      <span class="label">Contact</span>
+      <h1>Votre prochain événement</h1>
+      <p style="margin:0;max-width:40ch">Écrivez-moi avec la date, le lieu et ce dont vous avez besoin. Je réponds sous 48 h.</p>
+      <div class="mail"><output id="mail">matis.rodrigues1@gmail.com</output><button class="btn" type="button" id="copy-mail">Copier l'adresse</button><span class="copied" id="copied-mail" role="status"></span></div>
+      <div class="links">
+        <a href="https://www.instagram.com/matis.rds/" target="_blank" rel="noopener"><span>Instagram</span><span class="mono">@matis.rds ↗</span></a>
+        <a href="https://www.tiktok.com/@kwakwa.rm" target="_blank" rel="noopener"><span>TikTok</span><span class="mono">@kwakwa.rm ↗</span></a>
+        <a href="https://www.linkedin.com/in/matis-rodrigues/" target="_blank" rel="noopener"><span>LinkedIn</span><span class="mono">matis-rodrigues ↗</span></a>
+      </div>
+      <dl class="facts">
+        <dt>Zone</dt><dd>Tours, Blois et Centre-Val de Loire. Paris et Île-de-France selon l'événement.</dd>
+        <dt>Statut</dt><dd>Étudiant BUT MMI, alternant en communication</dd>
+      </dl>
+    </div>
+    <form class="c-form" id="brief" novalidate>
+      <h2>Préparer votre message</h2>
+      <p>Remplissez les champs : le message se rédige en dessous. Copiez-le, puis envoyez-le à l'adresse ci-contre.</p>
+      <div class="row2">
+        <div class="field"><label for="f-org">Structure</label><input id="f-org" placeholder="Salle, club, association" autocomplete="organization"></div>
+        <div class="field"><label for="f-name">Votre nom</label><input id="f-name" placeholder="Prénom Nom" autocomplete="name"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="f-event">Événement</label><input id="f-event" placeholder="Concert, match, gala…"></div>
+        <div class="field"><label for="f-date">Date</label><input id="f-date" type="date"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="f-place">Lieu</label><input id="f-place" placeholder="Ville ou salle"></div>
+        <div class="field"><label for="f-type">Type</label>
+          <select id="f-type"><option>Concert</option><option>Match</option><option>Spectacle</option><option>Conférence ou salon</option><option>Autre</option></select></div>
+      </div>
+      <div class="field"><label id="needs-l">Besoins</label>
+        <div class="chips" id="needs" role="group" aria-labelledby="needs-l">
+          <label><input type="checkbox" value="des photos pour vos réseaux le soir même"> Réseaux le soir même</label>
+          <label><input type="checkbox" value="une galerie complète sous 48 h"> Galerie complète</label>
+          <label><input type="checkbox" value="des portraits des artistes ou des joueurs"> Portraits</label>
+          <label><input type="checkbox" value="des images du public et de l'ambiance"> Public et ambiance</label>
+        </div>
+      </div>
+      <pre class="msg" id="msg" aria-live="polite"></pre>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="btn" type="button" id="copy-msg">Copier le message</button><span class="copied" id="copied-msg" role="status"></span></div>
+    </form>
+  </div>
+</template>
+
+<script>
+const DATA = {"series":{"manif":{"count":77,"start":1792220884000,"end":1792262214000,"isoMin":50,"isoMax":6400,"gear":["ILCE-6700|18-50mm F2.8 DC DN | Contemporary 021"],"items":[{"src":"media/manif/01.webp","w":1066,"h":1600,"t":1792238215000,"iso":50,"ss":"1/800","f":2.8,"fl":18,"ig":{"code":"DeoluaaiGn_","date":"2026-10-18"}},{"src":"media/manif/02.webp","w":1066,"h":1600,"t":1792238807000,"iso":50,"ss":"1/500","f":2.8,"fl":47,"ig":{"code":"DeoluaaiGn_","date":"2026-10-18"}},{"src":"media/manif/03.webp","w":1600,"h":1066,"t":1792239073000,"iso":50,"ss":"1/250","f":2.8,"fl":40,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/04.webp","w":1600,"h":1066,"t":1792239219000,"iso":50,"ss":"1/125","f":2.8,"fl":47,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/05.webp","w":1600,"h":1066,"t":1792239341000,"iso":50,"ss":"1/640","f":2.8,"fl":50,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/06.webp","w":1600,"h":1066,"t":1792239378000,"iso":50,"ss":"1/640","f":2.8,"fl":29,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/07.webp","w":1066,"h":1600,"t":1792239391000,"iso":50,"ss":"1/640","f":2.8,"fl":50,"ig":{"code":"DeoluaaiGn_","date":"2026-10-18"}},{"src":"media/manif/08.webp","w":1600,"h":1066,"t":1792240566000,"iso":100,"ss":"1/500","f":2.8,"fl":50,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/09.webp","w":1066,"h":1600,"t":1792241322000,"iso":100,"ss":"1/1000","f":2.8,"fl":20,"ig":{"code":"DeoluaaiGn_","date":"2026-10-18"}},{"src":"media/manif/10.webp","w":1600,"h":1066,"t":1792242431000,"iso":500,"ss":"1/1250","f":2.8,"fl":50,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/11.webp","w":1600,"h":1066,"t":1792242556000,"iso":500,"ss":"1/1250","f":2.8,"fl":33,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/12.webp","w":1066,"h":1600,"t":1792242626000,"iso":500,"ss":"1/1250","f":2.8,"fl":18,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/13.webp","w":1600,"h":1066,"t":1792243670000,"iso":500,"ss":"1/2000","f":2.8,"fl":50,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/14.webp","w":1600,"h":1066,"t":1792244553000,"iso":500,"ss":"1/2000","f":2.8,"fl":24,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/15.webp","w":1600,"h":1066,"t":1792245226000,"iso":400,"ss":"1/500","f":2.8,"fl":50,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/16.webp","w":1600,"h":1066,"t":1792245942000,"iso":320,"ss":"1/1000","f":2.8,"fl":38,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/17.webp","w":1600,"h":1066,"t":1792245951000,"iso":320,"ss":"1/1000","f":2.8,"fl":30,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/18.webp","w":1600,"h":1066,"t":1792246000000,"iso":320,"ss":"1/1000","f":2.8,"fl":18,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}},{"src":"media/manif/19.webp","w":1066,"h":1600,"t":1792246087000,"iso":320,"ss":"1/1000","f":2.8,"fl":50,"ig":{"code":"DeoluaaiGn_","date":"2026-10-18"}},{"src":"media/manif/20.webp","w":1066,"h":1600,"t":1792246523000,"iso":320,"ss":"1/1000","f":2.8,"fl":27,"ig":{"code":"DeoluaaiGn_","date":"2026-10-18"}},{"src":"media/manif/21.webp","w":1066,"h":1600,"t":1792246692000,"iso":320,"ss":"1/1000","f":2.8,"fl":50,"ig":{"code":"DeoluaaiGn_","date":"2026-10-18"}},{"src":"media/manif/22.webp","w":1066,"h":1600,"t":1792246856000,"iso":320,"ss":"1/1000","f":2.8,"fl":50,"ig":{"code":"DeoluaaiGn_","date":"2026-10-18"}},{"src":"media/manif/23.webp","w":1066,"h":1600,"t":1792247138000,"iso":320,"ss":"1/1000","f":2.8,"fl":41,"ig":{"code":"DeoluaaiGn_","date":"2026-10-18"}},{"src":"media/manif/24.webp","w":1600,"h":1066,"t":1792247312000,"iso":320,"ss":"1/1000","f":2.8,"fl":50,"ig":{"code":"DepA4wWCIka","date":"2026-10-18"}}]},"salers":{"count":28,"start":1781379516000,"end":1781975247000,"isoMin":50,"isoMax":160,"gear":["ILCE-6700|18-50mm F2.8 DC DN | Contemporary 021"],"items":[{"src":"media/salers/01.webp","w":1067,"h":1600,"t":1781379516000,"iso":50,"ss":"1/320","f":2.8,"fl":47,"ig":null},{"src":"media/salers/02.webp","w":1066,"h":1600,"t":1781963295000,"iso":160,"ss":"1/800","f":4.5,"fl":50,"ig":{"code":"DaVFe_7jFhA","date":"2026-07-03"}},{"src":"media/salers/03.webp","w":1067,"h":1600,"t":1781963299000,"iso":160,"ss":"1/800","f":4.5,"fl":50,"ig":{"code":"DaVFe_7jFhA","date":"2026-07-03"}},{"src":"media/salers/04.webp","w":1067,"h":1600,"t":1781963740000,"iso":125,"ss":"1/1000","f":5,"fl":50,"ig":{"code":"DaVFe_7jFhA","date":"2026-07-03"}},{"src":"media/salers/05.webp","w":1067,"h":1600,"t":1781963747000,"iso":125,"ss":"1/1000","f":5,"fl":50,"ig":{"code":"DaVFe_7jFhA","date":"2026-07-03"}},{"src":"media/salers/06.webp","w":1067,"h":1600,"t":1781963813000,"iso":125,"ss":"1/1000","f":5,"fl":50,"ig":null},{"src":"media/salers/07.webp","w":1067,"h":1600,"t":1781963851000,"iso":125,"ss":"1/1000","f":5,"fl":50,"ig":{"code":"DaVFe_7jFhA","date":"2026-07-03"}},{"src":"media/salers/08.webp","w":1067,"h":1600,"t":1781964129000,"iso":125,"ss":"1/1000","f":5,"fl":50,"ig":{"code":"DaVFe_7jFhA","date":"2026-07-03"}},{"src":"media/salers/09.webp","w":1067,"h":1600,"t":1781964130000,"iso":125,"ss":"1/1000","f":5,"fl":50,"ig":{"code":"DaVFe_7jFhA","date":"2026-07-03"}},{"src":"media/salers/10.webp","w":1067,"h":1600,"t":1781964486000,"iso":125,"ss":"1/1000","f":2.8,"fl":50,"ig":{"code":"DaVFe_7jFhA","date":"2026-07-03"}},{"src":"media/salers/11.webp","w":1066,"h":1600,"t":1781968116000,"iso":125,"ss":"1/400","f":3.5,"fl":50,"ig":null},{"src":"media/salers/12.webp","w":1067,"h":1600,"t":1781974254000,"iso":100,"ss":"1/400","f":5,"fl":50,"ig":{"code":"Dauoj_fDAul","date":"2026-07-13"}},{"src":"media/salers/13.webp","w":1067,"h":1600,"t":1781974282000,"iso":100,"ss":"1/400","f":5,"fl":50,"ig":{"code":"Dauoj_fDAul","date":"2026-07-13"}},{"src":"media/salers/14.webp","w":1067,"h":1600,"t":1781974403000,"iso":100,"ss":"1/400","f":5,"fl":50,"ig":{"code":"Dauoj_fDAul","date":"2026-07-13"}},{"src":"media/salers/15.webp","w":1067,"h":1600,"t":1781974492000,"iso":100,"ss":"1/400","f":5,"fl":50,"ig":{"code":"Dauoj_fDAul","date":"2026-07-13"}},{"src":"media/salers/16.webp","w":1067,"h":1600,"t":1781974583000,"iso":100,"ss":"1/400","f":5,"fl":50,"ig":null},{"src":"media/salers/17.webp","w":1067,"h":1600,"t":1781974605000,"iso":100,"ss":"1/400","f":5,"fl":48,"ig":null},{"src":"media/salers/18.webp","w":1067,"h":1600,"t":1781974640000,"iso":100,"ss":"1/400","f":5,"fl":50,"ig":{"code":"Dauoj_fDAul","date":"2026-07-13"}},{"src":"media/salers/19.webp","w":1067,"h":1600,"t":1781974641000,"iso":100,"ss":"1/400","f":5,"fl":50,"ig":{"code":"Dauoj_fDAul","date":"2026-07-13"}},{"src":"media/salers/20.webp","w":1067,"h":1600,"t":1781974988000,"iso":100,"ss":"1/400","f":4,"fl":50,"ig":{"code":"Dauoj_fDAul","date":"2026-07-13"}},{"src":"media/salers/21.webp","w":1067,"h":1600,"t":1781975155000,"iso":100,"ss":"1/400","f":2.8,"fl":48,"ig":null},{"src":"media/salers/22.webp","w":1066,"h":1600,"t":1781975247000,"iso":100,"ss":"1/400","f":2.8,"fl":50,"ig":{"code":"Dauoj_fDAul","date":"2026-07-13"}}]},"opera":{"count":25,"start":1781166406000,"end":1781184256000,"isoMin":160,"isoMax":32000,"gear":["ILCE-6700|18-50mm F2.8 DC DN | Contemporary 021"],"items":[{"src":"media/opera/01.webp","w":1600,"h":1067,"t":1781166406000,"iso":10000,"ss":"1/100","f":2.8,"fl":18,"ig":null},{"src":"media/opera/02.webp","w":1066,"h":1600,"t":1781167134000,"iso":50,"ss":"1/3","f":2.8,"fl":41,"ig":{"code":"DZqVD06DHYe","date":"2026-06-16"}},{"src":"media/opera/03.webp","w":1074,"h":1600,"t":1781167791000,"iso":3200,"ss":"1/125","f":2.8,"fl":50,"ig":null},{"src":"media/opera/04.webp","w":1066,"h":1600,"t":1781168210000,"iso":250,"ss":"1/5","f":2.8,"fl":18,"ig":{"code":"DZj98gkjMFr","date":"2026-06-14"}},{"src":"media/opera/05.webp","w":1066,"h":1600,"t":1781168296000,"iso":160,"ss":"1/5","f":2.8,"fl":50,"ig":{"code":"DZj98gkjMFr","date":"2026-06-14"}},{"src":"media/opera/06.webp","w":1600,"h":1067,"t":1781168964000,"iso":250,"ss":"1/5","f":2.8,"fl":18,"ig":null},{"src":"media/opera/07.webp","w":1067,"h":1600,"t":1781169302000,"iso":400,"ss":"1/5","f":2.8,"fl":50,"ig":{"code":"DZj98gkjMFr","date":"2026-06-14"}},{"src":"media/opera/08.webp","w":1600,"h":1066,"t":1781169573000,"iso":800,"ss":"1/160","f":2.8,"fl":25,"ig":null},{"src":"media/opera/09.webp","w":1600,"h":1067,"t":1781169618000,"iso":500,"ss":"1/25","f":2.8,"fl":50,"ig":{"code":"DZqVD06DHYe","date":"2026-06-16"}},{"src":"media/opera/10.webp","w":1066,"h":1600,"t":1781170149000,"iso":100,"ss":"1/15","f":2.8,"fl":43,"ig":{"code":"DZj98gkjMFr","date":"2026-06-14"}},{"src":"media/opera/11.webp","w":1066,"h":1600,"t":1781170499000,"iso":10000,"ss":"1/100","f":2.8,"fl":50,"ig":null},{"src":"media/opera/12.webp","w":1066,"h":1600,"t":1781170518000,"iso":10000,"ss":"1/100","f":2.8,"fl":50,"ig":null},{"src":"media/opera/13.webp","w":1600,"h":1067,"t":1781170621000,"iso":400,"ss":"1/10","f":2.8,"fl":50,"ig":null},{"src":"media/opera/14.webp","w":1600,"h":1067,"t":1781171187000,"iso":100,"ss":"1/10","f":2.8,"fl":50,"ig":{"code":"DZj98gkjMFr","date":"2026-06-14"}},{"src":"media/opera/15.webp","w":1066,"h":1600,"t":1781171193000,"iso":100,"ss":"1/10","f":2.8,"fl":50,"ig":{"code":"DZj98gkjMFr","date":"2026-06-14"}},{"src":"media/opera/16.webp","w":1067,"h":1600,"t":1781171383000,"iso":200,"ss":"1/10","f":2.8,"fl":50,"ig":{"code":"DZqVD06DHYe","date":"2026-06-16"}},{"src":"media/opera/17.webp","w":1067,"h":1600,"t":1781172100000,"iso":50,"ss":"1/2","f":22,"fl":28,"ig":{"code":"DZqVD06DHYe","date":"2026-06-16"}},{"src":"media/opera/18.webp","w":1067,"h":1600,"t":1781176647000,"iso":50,"ss":"1/800","f":2.8,"fl":50,"ig":{"code":"DZqVD06DHYe","date":"2026-06-16"}},{"src":"media/opera/19.webp","w":1067,"h":1600,"t":1781177358000,"iso":1000,"ss":"1/125","f":2.8,"fl":43,"ig":{"code":"DZqVD06DHYe","date":"2026-06-16"}},{"src":"media/opera/20.webp","w":1067,"h":1600,"t":1781179587000,"iso":1000,"ss":"1/125","f":2.8,"fl":50,"ig":null},{"src":"media/opera/21.webp","w":1067,"h":1600,"t":1781180163000,"iso":1250,"ss":"1/125","f":2.8,"fl":45,"ig":null},{"src":"media/opera/22.webp","w":1600,"h":1067,"t":1781184256000,"iso":1250,"ss":"1/125","f":2.8,"fl":50,"ig":null}]},"b3x3":{"count":41,"start":1789652465000,"end":1789662961000,"isoMin":50,"isoMax":800,"gear":["ILCE-6700|E 28-75mm F2.8 A063"],"items":[{"src":"media/b3x3/01.webp","w":1066,"h":1600,"t":1789652465000,"iso":50,"ss":"1/1000","f":2.8,"fl":28,"ig":null},{"src":"media/b3x3/02.webp","w":1066,"h":1600,"t":1789652839000,"iso":50,"ss":"1/1000","f":2.8,"fl":33,"ig":null},{"src":"media/b3x3/03.webp","w":1066,"h":1600,"t":1789652865000,"iso":50,"ss":"1/1000","f":2.8,"fl":28,"ig":null},{"src":"media/b3x3/04.webp","w":1600,"h":1066,"t":1789653150000,"iso":50,"ss":"1/1000","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/05.webp","w":1066,"h":1600,"t":1789653236000,"iso":50,"ss":"1/1000","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/06.webp","w":1066,"h":1600,"t":1789653278000,"iso":50,"ss":"1/1000","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/07.webp","w":1066,"h":1600,"t":1789653329000,"iso":50,"ss":"1/1000","f":2.8,"fl":63,"ig":null},{"src":"media/b3x3/08.webp","w":1066,"h":1600,"t":1789653405000,"iso":50,"ss":"1/1000","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/09.webp","w":1066,"h":1600,"t":1789653543000,"iso":50,"ss":"1/1000","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/10.webp","w":1066,"h":1600,"t":1789653783000,"iso":50,"ss":"1/1000","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/11.webp","w":1066,"h":1600,"t":1789653948000,"iso":50,"ss":"1/800","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/12.webp","w":1066,"h":1600,"t":1789655255000,"iso":50,"ss":"1/800","f":2.8,"fl":41,"ig":null},{"src":"media/b3x3/13.webp","w":1066,"h":1600,"t":1789656341000,"iso":50,"ss":"1/800","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/14.webp","w":1066,"h":1600,"t":1789656570000,"iso":50,"ss":"1/1250","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/15.webp","w":1066,"h":1600,"t":1789656754000,"iso":50,"ss":"1/1000","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/16.webp","w":1066,"h":1600,"t":1789657284000,"iso":50,"ss":"1/1000","f":2.8,"fl":28,"ig":null},{"src":"media/b3x3/17.webp","w":1066,"h":1600,"t":1789657338000,"iso":50,"ss":"1/1000","f":2.8,"fl":28,"ig":null},{"src":"media/b3x3/18.webp","w":1066,"h":1600,"t":1789659427000,"iso":50,"ss":"1/1000","f":2.8,"fl":75,"ig":null},{"src":"media/b3x3/19.webp","w":1066,"h":1600,"t":1789662759000,"iso":800,"ss":"1/1600","f":2.8,"fl":28,"ig":null},{"src":"media/b3x3/20.webp","w":1066,"h":1600,"t":1789662961000,"iso":800,"ss":"1/1600","f":2.8,"fl":75,"ig":null}]},"mada":{"count":60,"start":1793534754000,"end":1793545905000,"isoMin":250,"isoMax":2000,"gear":["ILCE-7M3|SAMYANG AF 35-150mm F2-2.8"],"items":[{"src":"media/mada/01.webp","w":1066,"h":1600,"t":"2026-11-01T12:05:54.000Z","iso":400,"ss":"1/1600","f":2.8,"fl":129,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-01.jpg"},{"src":"media/mada/02.webp","w":1067,"h":1600,"t":"2026-11-01T12:09:07.000Z","iso":640,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-04.jpg"},{"src":"media/mada/03.webp","w":1600,"h":1067,"t":"2026-11-01T12:19:14.000Z","iso":2000,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-07.jpg"},{"src":"media/mada/04.webp","w":1066,"h":1600,"t":"2026-11-01T12:28:35.000Z","iso":500,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-09.jpg"},{"src":"media/mada/05.webp","w":1067,"h":1600,"t":"2026-11-01T12:38:49.000Z","iso":1000,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-12.jpg"},{"src":"media/mada/06.webp","w":1600,"h":1067,"t":"2026-11-01T12:44:23.000Z","iso":640,"ss":"1/1600","f":2.8,"fl":138,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-15.jpg"},{"src":"media/mada/07.webp","w":1600,"h":1067,"t":"2026-11-01T12:48:11.000Z","iso":1250,"ss":"1/200","f":10,"fl":35,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-18.jpg"},{"src":"media/mada/08.webp","w":1067,"h":1600,"t":"2026-11-01T12:52:48.000Z","iso":1250,"ss":"1/1600","f":2.8,"fl":125,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-21.jpg"},{"src":"media/mada/09.webp","w":1600,"h":1067,"t":"2026-11-01T12:59:10.000Z","iso":1600,"ss":"1/1600","f":2.5,"fl":69,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-23.jpg"},{"src":"media/mada/10.webp","w":1600,"h":1067,"t":"2026-11-01T13:14:25.000Z","iso":1250,"ss":"1/1600","f":2,"fl":35,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-26.jpg"},{"src":"media/mada/11.webp","w":1600,"h":1066,"t":"2026-11-01T13:21:41.000Z","iso":1000,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-29.jpg"},{"src":"media/mada/12.webp","w":1067,"h":1600,"t":"2026-11-01T14:30:50.000Z","iso":400,"ss":"1/1600","f":2.5,"fl":66,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-32.jpg"},{"src":"media/mada/13.webp","w":1600,"h":1066,"t":"2026-11-01T14:34:15.000Z","iso":640,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-35.jpg"},{"src":"media/mada/14.webp","w":1600,"h":1067,"t":"2026-11-01T14:36:49.000Z","iso":640,"ss":"1/1600","f":2.8,"fl":100,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-38.jpg"},{"src":"media/mada/15.webp","w":1600,"h":1067,"t":"2026-11-01T14:40:36.000Z","iso":640,"ss":"1/1600","f":2.8,"fl":121,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-40.jpg"},{"src":"media/mada/16.webp","w":1067,"h":1600,"t":"2026-11-01T14:45:43.000Z","iso":1000,"ss":"1/1600","f":2.5,"fl":70,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-43.jpg"},{"src":"media/mada/17.webp","w":1066,"h":1600,"t":"2026-11-01T14:46:46.000Z","iso":1250,"ss":"1/1600","f":2.8,"fl":123,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-46.jpg"},{"src":"media/mada/18.webp","w":1600,"h":1066,"t":"2026-11-01T14:48:25.000Z","iso":1250,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-49.jpg"},{"src":"media/mada/19.webp","w":1067,"h":1600,"t":"2026-11-01T14:49:52.000Z","iso":1000,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-54.jpg"},{"src":"media/mada/20.webp","w":1067,"h":1600,"t":"2026-11-01T14:51:45.000Z","iso":500,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-56.jpg"},{"src":"media/mada/21.webp","w":1067,"h":1600,"t":"2026-11-01T14:58:17.000Z","iso":800,"ss":"1/1600","f":2.8,"fl":150,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-59.jpg"},{"src":"media/mada/22.webp","w":1067,"h":1600,"t":"2026-11-01T15:11:45.000Z","iso":800,"ss":"1/1600","f":2.8,"fl":99,"cam":"ILCE-7M3","lens":"SAMYANG AF 35-150mm F2-2.8","orig":"matis rodrigues-62.jpg"}]},"eml":{"count":23,"start":1778154584000,"end":1778155261000,"isoMin":100,"isoMax":640,"gear":["Canon EOS R10|RF-S18-150mm F3.5-6.3 IS STM"],"items":[{"src":"media/eml/01.webp","w":1067,"h":1600,"t":"2026-05-07T11:49:44.000Z","iso":100,"ss":"1/250","f":4.5,"fl":30,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-1.jpg"},{"src":"media/eml/02.webp","w":1067,"h":1600,"t":"2026-05-07T11:50:58.000Z","iso":100,"ss":"1/250","f":5,"fl":35,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-3.jpg"},{"src":"media/eml/03.webp","w":1067,"h":1600,"t":"2026-05-07T11:51:49.000Z","iso":100,"ss":"1/400","f":3.5,"fl":18,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-5.jpg"},{"src":"media/eml/04.webp","w":1066,"h":1600,"t":"2026-05-07T11:52:24.000Z","iso":100,"ss":"1/400","f":5.6,"fl":47,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-7.jpg"},{"src":"media/eml/05.webp","w":1067,"h":1600,"t":"2026-05-07T11:53:55.000Z","iso":250,"ss":"1/250","f":6.3,"fl":86,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-9.jpg"},{"src":"media/eml/06.webp","w":1067,"h":1600,"t":"2026-05-07T11:54:21.000Z","iso":250,"ss":"1/250","f":5,"fl":41,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-11.jpg"},{"src":"media/eml/07.webp","w":1045,"h":1600,"t":"2026-05-07T11:57:25.000Z","iso":160,"ss":"1/250","f":5.6,"fl":60,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-13.jpg"},{"src":"media/eml/08.webp","w":1045,"h":1600,"t":"2026-05-07T11:58:53.000Z","iso":640,"ss":"1/250","f":6.3,"fl":150,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-15.jpg"},{"src":"media/eml/09.webp","w":1067,"h":1600,"t":"2026-05-07T11:59:17.000Z","iso":640,"ss":"1/250","f":6.3,"fl":66,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-17.jpg"},{"src":"media/eml/10.webp","w":1067,"h":1600,"t":"2026-05-07T11:59:28.000Z","iso":640,"ss":"1/250","f":6.3,"fl":89,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-20.jpg"},{"src":"media/eml/11.webp","w":1066,"h":1600,"t":"2026-05-07T12:00:45.000Z","iso":400,"ss":"1/250","f":6.3,"fl":70,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-22.jpg"},{"src":"media/eml/12.webp","w":1067,"h":1600,"t":"2026-05-07T12:01:01.000Z","iso":400,"ss":"1/250","f":5.6,"fl":57,"cam":"Canon EOS R10","lens":"RF-S18-150mm F3.5-6.3 IS STM","orig":"gouté-25.jpg"}]}},"hero":[{"src":"media/hero/01.webp","w":666,"h":1000,"t":1793534754000,"iso":400,"ss":"1/1600","f":2.8,"fl":129},{"src":"media/hero/02.webp","w":666,"h":1000,"t":1793534919000,"iso":640,"ss":"1/1600","f":2.8,"fl":104},{"src":"media/hero/03.webp","w":1400,"h":934,"t":1793534940000,"iso":640,"ss":"1/1600","f":2.8,"fl":82},{"src":"media/hero/04.webp","w":667,"h":1000,"t":1793534947000,"iso":640,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/05.webp","w":1400,"h":933,"t":1793535076000,"iso":640,"ss":"1/1600","f":2.5,"fl":77},{"src":"media/hero/06.webp","w":1400,"h":933,"t":1793535225000,"iso":1600,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/07.webp","w":1400,"h":934,"t":1793535554000,"iso":2000,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/08.webp","w":1400,"h":933,"t":1793535759000,"iso":1250,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/09.webp","w":666,"h":1000,"t":1793536115000,"iso":500,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/10.webp","w":1400,"h":933,"t":1793536239000,"iso":1600,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/11.webp","w":1400,"h":933,"t":1793536591000,"iso":1250,"ss":"1/200","f":8,"fl":43},{"src":"media/hero/12.webp","w":667,"h":1000,"t":1793536729000,"iso":1000,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/13.webp","w":1400,"h":933,"t":1793536979000,"iso":1000,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/14.webp","w":1400,"h":933,"t":1793537026000,"iso":640,"ss":"1/1600","f":2.8,"fl":86},{"src":"media/hero/15.webp","w":1400,"h":933,"t":1793537063000,"iso":640,"ss":"1/1600","f":2.8,"fl":138},{"src":"media/hero/16.webp","w":1400,"h":933,"t":1793537130000,"iso":640,"ss":"1/1600","f":2.5,"fl":65},{"src":"media/hero/17.webp","w":1400,"h":933,"t":1793537151000,"iso":640,"ss":"1/1600","f":2.8,"fl":92},{"src":"media/hero/18.webp","w":1400,"h":934,"t":1793537291000,"iso":1250,"ss":"1/200","f":10,"fl":35},{"src":"media/hero/19.webp","w":667,"h":1000,"t":1793537523000,"iso":1250,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/20.webp","w":667,"h":1000,"t":1793537560000,"iso":1250,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/21.webp","w":667,"h":1000,"t":1793537568000,"iso":1250,"ss":"1/1600","f":2.8,"fl":125},{"src":"media/hero/22.webp","w":1400,"h":933,"t":1793537707000,"iso":1250,"ss":"1/1600","f":2.2,"fl":59},{"src":"media/hero/23.webp","w":1400,"h":934,"t":1793537950000,"iso":1600,"ss":"1/1600","f":2.5,"fl":69},{"src":"media/hero/24.webp","w":1400,"h":933,"t":1793538186000,"iso":1000,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/25.webp","w":1400,"h":933,"t":1793538268000,"iso":1250,"ss":"1/1600","f":2.5,"fl":69},{"src":"media/hero/26.webp","w":1400,"h":933,"t":1793538865000,"iso":1250,"ss":"1/1600","f":2,"fl":35},{"src":"media/hero/27.webp","w":667,"h":1000,"t":1793539128000,"iso":1600,"ss":"1/1600","f":2.8,"fl":105},{"src":"media/hero/28.webp","w":667,"h":1000,"t":1793539177000,"iso":1000,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/29.webp","w":1400,"h":933,"t":1793539301000,"iso":1000,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/30.webp","w":1400,"h":933,"t":1793539306000,"iso":1000,"ss":"1/1600","f":2.8,"fl":96},{"src":"media/hero/31.webp","w":667,"h":1000,"t":1793543414000,"iso":250,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/32.webp","w":667,"h":1000,"t":1793543450000,"iso":400,"ss":"1/1600","f":2.5,"fl":66},{"src":"media/hero/33.webp","w":667,"h":1000,"t":1793543590000,"iso":640,"ss":"1/1600","f":2.8,"fl":125},{"src":"media/hero/34.webp","w":1400,"h":933,"t":1793543621000,"iso":640,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/35.webp","w":1400,"h":933,"t":1793543655000,"iso":640,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/36.webp","w":1400,"h":933,"t":1793543706000,"iso":640,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/37.webp","w":667,"h":1000,"t":1793543789000,"iso":640,"ss":"1/1600","f":2.8,"fl":88},{"src":"media/hero/38.webp","w":1400,"h":933,"t":1793543809000,"iso":640,"ss":"1/1600","f":2.8,"fl":100},{"src":"media/hero/39.webp","w":667,"h":1000,"t":1793543954000,"iso":640,"ss":"1/1600","f":2.5,"fl":73},{"src":"media/hero/40.webp","w":1400,"h":933,"t":1793544036000,"iso":640,"ss":"1/1600","f":2.8,"fl":121},{"src":"media/hero/41.webp","w":666,"h":1000,"t":1793544111000,"iso":640,"ss":"1/1600","f":2.2,"fl":52},{"src":"media/hero/42.webp","w":1400,"h":933,"t":1793544246000,"iso":1000,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/43.webp","w":667,"h":1000,"t":1793544343000,"iso":1000,"ss":"1/1600","f":2.5,"fl":70},{"src":"media/hero/44.webp","w":667,"h":1000,"t":1793544363000,"iso":1000,"ss":"1/1600","f":2,"fl":37},{"src":"media/hero/45.webp","w":667,"h":1000,"t":1793544367000,"iso":1000,"ss":"1/1600","f":2.5,"fl":64},{"src":"media/hero/46.webp","w":666,"h":1000,"t":1793544406000,"iso":1250,"ss":"1/1600","f":2.8,"fl":123},{"src":"media/hero/47.webp","w":666,"h":1000,"t":1793544489000,"iso":1250,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/48.webp","w":666,"h":1000,"t":1793544496000,"iso":1250,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/49.webp","w":1400,"h":933,"t":1793544505000,"iso":1250,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/50.webp","w":666,"h":1000,"t":1793544555000,"iso":800,"ss":"1/1600","f":2.8,"fl":111},{"src":"media/hero/51.webp","w":667,"h":1000,"t":1793544574000,"iso":1000,"ss":"1/1600","f":2.8,"fl":120},{"src":"media/hero/52.webp","w":666,"h":1000,"t":1793544592000,"iso":1000,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/53.webp","w":1400,"h":933,"t":1793544647000,"iso":1000,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/54.webp","w":667,"h":1000,"t":1793544705000,"iso":500,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/55.webp","w":667,"h":1000,"t":1793544845000,"iso":1600,"ss":"1/640","f":2.8,"fl":100},{"src":"media/hero/56.webp","w":1400,"h":933,"t":1793544893000,"iso":1600,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/57.webp","w":667,"h":1000,"t":1793545097000,"iso":800,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/58.webp","w":667,"h":1000,"t":1793545463000,"iso":800,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/59.webp","w":666,"h":1000,"t":1793545884000,"iso":800,"ss":"1/1600","f":2.8,"fl":150},{"src":"media/hero/60.webp","w":667,"h":1000,"t":1793545905000,"iso":800,"ss":"1/1600","f":2.8,"fl":99}]};
+DATA.series.opera.count = 114;
+const SERIES = [
+  {k:'mada',  title:'NBA Gas’Paname',     sub:'Tournoi de basket de la communauté malgache, organisé par Gas’Paname Sport à Juvisy-sur-Orge', note:'Action sous le panier, banc, public. Éclairage de gymnase, sans flash.'},
+  {k:'manif', title:'Tours, 17 octobre',  sub:'Reportage de rue, manifestation', note:'Une journée dans le cortège, au plus près des fumigènes et des barricades.'},
+  {k:'b3x3',  title:'Basket 3x3 Tours',   sub:'Tournoi en plein air', note:'Joueurs, stands et public d’un tournoi de rue.'},
+  {k:'salers',title:'Salera',             sub:'Spectacle équestre et fauconnerie', note:'Chars, cavaliers et rapaces en vol devant la scène, sur deux dates de représentation.'},
+  {k:'opera', title:'Opéra Garnier',      sub:'Visite et coulisses', note:'Grand foyer, salle et ateliers costumes, en lumière d’intérieur, jusqu’à ISO 32 000.'},
+  {k:'eml',   title:'Maurice Leroux',     sub:'Événement d’école, commande', note:'Reportage réalisé pour la communication de l’école et publié sur ses réseaux.'}
+];
+const PUBS = [
+  {code:'DepA4wWCIka', date:'2026-10-18', k:'manif', what:'Manifestation du 17 octobre, Tours', n:20},
+  {code:'DeoluaaiGn_', date:'2026-10-18', k:'manif', what:'Manifestation du 17 octobre, portraits', n:14},
+  {code:'DdgYbTVDO6E', date:'2026-09-20', k:'b3x3', what:'Basket 3x3, Tours', n:20},
+  {code:'Dauoj_fDAul', date:'2026-07-13', k:'salers', what:'Salera, spectacle équestre', n:13},
+  {code:'DaVFe_7jFhA', date:'2026-07-03', k:'salers', what:'Salera, fauconnerie', n:8},
+  {code:'DZqVD06DHYe', date:'2026-06-16', k:'opera', what:'Opéra Garnier, noir et blanc', n:12},
+  {code:'DZj98gkjMFr', date:'2026-06-14', k:'opera', what:'Opéra Garnier, dorures', n:14}
+];
+const coverOf=k=>{const it=DATA.series[k].items,c=BYK[k].cover;return c!=null?c:Math.max(0,it.findIndex(i=>i.ig));};
+const markLoaded=root=>root.querySelectorAll('img').forEach(i=>{if(i.complete&&i.naturalWidth)i.classList.add('ld');});
+for(const ev of ['load','error'])document.addEventListener(ev,e=>{if(e.target.tagName==='IMG')e.target.classList.add('ld');},true);
+const BYK = Object.fromEntries(SERIES.map(s=>[s.k,s]));
+const TZ='Europe/Paris';
+const fmtTime=(t,sec=false)=>new Date(t).toLocaleTimeString('fr-FR',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:sec?'2-digit':undefined});
+const fmtDate=t=>new Date(t).toLocaleDateString('fr-FR',{timeZone:TZ,day:'2-digit',month:'2-digit',year:'numeric'});
+const fmtDateLong=t=>new Date(t).toLocaleDateString('fr-FR',{timeZone:TZ,day:'numeric',month:'long',year:'numeric'});
+const nf=n=>n.toLocaleString('fr-FR');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const igUrl=c=>'https://www.instagram.com/p/'+c+'/';
+const gearName=g=>{const [c,l]=g.split('|');const cam={'ILCE-7M3':'Sony A7 III','ILCE-6700':'Sony A6700'}[c]||c;
+  const lens=(l||'').replace('SAMYANG AF 35-150mm F2-2.8','Samyang 35-150 mm f/2-2.8').replace('E 28-75mm F2.8 A063','Tamron 28-75 mm f/2.8').replace(/18-50mm F2\.8 DC DN.*$/,'Sigma 18-50 mm f/2.8').replace('RF-S18-150mm F3.5-6.3 IS STM','Canon RF-S 18-150 mm');return [cam,lens];};
+function dateSpan(s){if(fmtDate(s.start)===fmtDate(s.end))return fmtDate(s.start);return new Date(s.start).toLocaleDateString('fr-FR',{timeZone:TZ,day:'numeric'})+' et '+fmtDateLong(s.end);}
+function hourSpan(s){if(fmtDate(s.start)!==fmtDate(s.end))return '2 représentations';return fmtTime(s.start)+' → '+fmtTime(s.end);}
+const sorted=SERIES.slice().sort((a,b)=>DATA.series[b.k].start-DATA.series[a.k].start);
+
+/* ---------------- routeur + rideau ---------------- */
+const view=document.getElementById('view');
+let current=null, teardown=null;
+function routeOf(h){h=(h||'').replace('#','');if(BYK[h])return {v:'serie',k:h};if(h==='contact')return {v:'contact'};return {v:'home',anchor:(h==='series'||h==='conditions')?h:null};}
+function setNav(r){document.querySelectorAll('[data-nav]').forEach(a=>a.setAttribute('aria-current',String((r.v==='contact'&&a.dataset.nav==='contact')||(r.v==='home'&&r.anchor===a.dataset.nav))));}
+function scrollToAnchor(a,smooth){const el=document.getElementById(a+'-sec');if(!el)return;const y=el.getBoundingClientRect().top+scrollY-document.querySelector('.top').offsetHeight;window.scrollTo({top:y,behavior:smooth&&!reduce?'smooth':'instant'});}
+function render(r){
+  if(teardown){teardown();teardown=null;}
+  setNav(r);
+  document.documentElement.classList.toggle('dark',r.v==='serie');
+  if(r.v==='home'){view.replaceChildren(document.getElementById('tpl-home').content.cloneNode(true));teardown=initHome();}
+  else if(r.v==='contact'){view.replaceChildren(document.getElementById('tpl-contact').content.cloneNode(true));initContact();}
+  else renderSerie(r.k);
+  if(r.anchor)requestAnimationFrame(()=>scrollToAnchor(r.anchor,false)); else window.scrollTo({top:0,behavior:'instant'});
+  markLoaded(view);
+  current=r;
+}
+function go(){
+  const r=routeOf(location.hash);
+  if(current&&r.v==='home'&&current.v==='home'){setNav(r);if(r.anchor)scrollToAnchor(r.anchor,true);else window.scrollTo({top:0,behavior:reduce?'instant':'smooth'});current=r;return;}
+  if(!current||reduce){render(r);return;}
+  const c=document.getElementById('curtain'),t=document.getElementById('curtain-t'),s=document.getElementById('curtain-s');
+  if(r.v==='serie'){const d=DATA.series[r.k];t.textContent=BYK[r.k].title;s.textContent=dateSpan(d)+' · '+hourSpan(d)+' · '+d.count+' images';}
+  else if(r.v==='contact'){t.textContent='Contact';s.textContent='matis.rodrigues1@gmail.com';}
+  else{t.textContent='Matis Rodrigues';s.textContent='Sport · spectacle · reportage';}
+  c.className='curtain in';
+  setTimeout(()=>{render(r);c.className='curtain out';},560);
+}
+addEventListener('hashchange',go);
+
+/* ---------------- accueil : la pellicule du match ---------------- */
+function initHome(){
+  const H=DATA.hero, n=H.length, t0=H[0].t, t1=H[n-1].t;
+  document.getElementById('h-sub').textContent='Dimanche '+fmtDateLong(t0)+' · '+n+' images livrées · '+fmtTime(t0)+' → '+fmtTime(t1);
+  // index
+  const ul=document.getElementById('index');
+  sorted.forEach(s=>{const d=DATA.series[s.k];const li=document.createElement('li');
+    const c=d.items[coverOf(s.k)];
+    li.innerHTML=`<a href="#${s.k}"><span class="cov"><img src="${c.src}" alt="${s.title}" loading="lazy" style="object-position:${s.pos||'50% 50%'}"></span><span class="m mono"><span>${dateSpan(d)}</span><span>${d.count} images</span></span><span class="t">${s.title}</span><span class="s">${s.sub.split(',')[0]}</span></a>`;
+    ul.appendChild(li);});
+  // publications
+  document.getElementById('pubs').innerHTML=PUBS.map(p=>{const it=DATA.series[p.k].items;const th=it.find(i=>i.ig&&i.ig.code===p.code)||it[1]||it[0];
+    return `<li><a href="${igUrl(p.code)}" target="_blank" rel="noopener"><span class="th"><img src="${th.src}" alt="" loading="lazy"></span><span class="mono d">${new Date(p.date+'T12:00:00').toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'})} · ${p.n} images</span><span class="w">${p.what} ↗</span></a></li>`;}).join('');
+  document.getElementById('t-sel').textContent='Pour le tournoi NBA Gas’Paname : '+n+' images retouchées entre '+fmtTime(t0)+' et '+fmtTime(t1)+', classées par heure. Pas de doublons ni d’images floues à trier.';
+  // pellicule
+  const track=document.getElementById('track'), reel=document.getElementById('reel');
+  track.innerHTML=H.map((h,i)=>`<figure data-i="${i}"><img src="${h.src}" width="${h.w}" height="${h.h}" alt="NBA Gas’Paname, ${fmtTime(h.t)}" loading="${i<6?'eager':'lazy'}" decoding="async"></figure>`).join('');
+  const figs=[...track.children];
+  // timeline
+  const bar=document.getElementById('bar'),head=document.getElementById('head');
+  const pos=t=>(t-t0)/(t1-t0);
+  const ticks=H.map(h=>{const e=document.createElement('i');e.className='keep';e.style.left='calc('+(pos(h.t)*100)+'% - 1px)';bar.appendChild(e);return e;});
+  bar.setAttribute('aria-valuemax',n);
+  const hours=document.getElementById('hours');const marks=[t0];{const d=new Date(t0);d.setMinutes(0,0,0);let x=d.getTime()+3600e3;while(x<t1-20*60e3){marks.push(x);x+=3600e3;}}marks.push(t1);
+  hours.innerHTML=marks.map(m=>`<span>${fmtTime(m)}</span>`).join('');
+  const el={time:document.getElementById('r-time'),n:document.getElementById('r-n'),exp:document.getElementById('r-exp'),fl:document.getElementById('r-fl'),play:document.getElementById('b-play')};
+  let idx=0, playing=!reduce, timer=0, alive=true;
+  function show(i){
+    idx=(i+n)%n;const h=H[idx];
+    figs.forEach((f,j)=>f.classList.toggle('cur',j===idx));
+    ticks.forEach((t,j)=>t.classList.toggle('on',j<=idx));
+    const f=figs[idx];const x=f.offsetLeft+f.offsetWidth/2-reel.clientWidth/2;
+    track.style.transform='translateX('+(-x)+'px)';
+    head.style.left=(pos(h.t)*100)+'%';
+    el.time.textContent=fmtTime(h.t);el.n.textContent=String(idx+1).padStart(2,'0')+' / '+n;
+    el.exp.textContent='ISO '+h.iso+' · '+h.ss+' · f/'+h.f;el.fl.textContent=h.fl+' mm';
+    bar.setAttribute('aria-valuenow',idx+1);bar.setAttribute('aria-valuetext',fmtTime(h.t)+', image '+(idx+1));
+  }
+  const schedule=()=>{clearTimeout(timer);if(playing&&alive)timer=setTimeout(()=>{show(idx+1);schedule();},2600);};
+  const setPlaying=p=>{playing=p;el.play.textContent=p?'Pause':'Lecture';schedule();};
+  const nearest=t=>{let b=0,bd=Infinity;H.forEach((h,i)=>{const d=Math.abs(h.t-t);if(d<bd){bd=d;b=i;}});return b;};
+  const scrub=e=>{const r=bar.getBoundingClientRect();const x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));show(nearest(t0+x*(t1-t0)));};
+  bar.addEventListener('pointerdown',e=>{setPlaying(false);bar.setPointerCapture(e.pointerId);scrub(e);bar.onpointermove=scrub;});
+  bar.addEventListener('pointerup',()=>{bar.onpointermove=null;});
+  bar.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();setPlaying(false);show(idx+(e.key==='ArrowRight'?1:-1));}});
+  track.addEventListener('click',e=>{const f=e.target.closest('figure');if(!f)return;const i=+f.dataset.i;if(i===idx)openLB(H,'NBA Gas’Paname',i);else{setPlaying(false);show(i);}});
+  document.getElementById('b-prev').onclick=()=>{setPlaying(false);show(idx-1);};
+  document.getElementById('b-next').onclick=()=>{setPlaying(false);show(idx+1);};
+  el.play.onclick=()=>setPlaying(!playing);
+  let sx=null;reel.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')sx=e.clientX;});reel.addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>40){setPlaying(false);show(idx+(dx<0?1:-1));}});
+  const onResize=()=>{track.style.transition='none';show(idx);requestAnimationFrame(()=>track.style.transition='');};
+  addEventListener('resize',onResize);
+  const io=new IntersectionObserver(([en])=>{if(!en.isIntersecting)clearTimeout(timer);else schedule();});io.observe(reel);
+  figs[0].querySelector('img').decode().catch(()=>{}).finally(()=>{onResize();schedule();});
+  show(0);
+  return ()=>{alive=false;clearTimeout(timer);io.disconnect();removeEventListener('resize',onResize);};
+}
+
+/* ---------------- page série ---------------- */
+function renderSerie(k){
+  const s=BYK[k],d=DATA.series[k];const gear=d.gear.map(gearName);
+  const nx=sorted[(sorted.findIndex(x=>x.k===k)+1)%sorted.length];
+  const posted=d.items.filter(i=>i.ig).length;const ci=coverOf(k),cv=d.items[ci];
+  const wrap=document.createElement('div');wrap.className='wrap';
+  wrap.innerHTML=`
+   <div class="s-head grid12">
+     <a class="back mono" href="#series">← Toutes les séries</a>
+     <h1>${s.title}</h1>
+     <p class="sub">${s.sub}. ${s.note}</p>
+     <dl class="facts">
+       <dt>Date</dt><dd>${dateSpan(d)}</dd>
+       <dt>Horaires</dt><dd>${hourSpan(d)}</dd>
+       <dt>Livrées</dt><dd>${d.count} images</dd>
+       <dt>Boîtier</dt><dd>${[...new Set(gear.map(g=>g[0]))].join(', ')}</dd>
+       <dt>Optique</dt><dd>${[...new Set(gear.map(g=>g[1]))].join(', ')}</dd>
+       <dt>ISO</dt><dd>${nf(d.isoMin)} à ${nf(d.isoMax)}</dd>
+       <dt>Ici</dt><dd>${d.items.length} images dans l'ordre de prise de vue${posted?', dont '+posted+' publiées sur Instagram':''}</dd>
+     </dl>
+     <figure class="cover" data-i="${ci}"><img src="${cv.src}" width="${cv.w}" height="${cv.h}" alt="${s.title}, ${fmtTime(cv.t)}"></figure>
+   </div>
+   <div class="gallery">${d.items.map((it,i)=>{if(i===ci)return '';const ar=(it.w/it.h).toFixed(3);return `<figure data-i="${i}" style="flex:${ar} 1 calc(var(--rh) * ${ar})"><img src="${it.src}" width="${it.w}" height="${it.h}" alt="${s.title}, ${fmtTime(it.t)}" loading="${i<5?'eager':'lazy'}"><figcaption class="mono"><span>${fmtTime(it.t)}</span>${it.ig?'<span class="ig">publiée</span>':''}</figcaption></figure>`;}).join('')}<i class="fill"></i></div>
+   <a class="next" href="#${nx.k}"><span class="label">Série suivante</span><b>${nx.title} →</b></a>`;
+  view.replaceChildren(wrap);
+  wrap.addEventListener('click',e=>{const f=e.target.closest('figure[data-i]');if(f)openLB(d.items,s.title,+f.dataset.i);});
+}
+function openLB(items,title,i){
+  const lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-label','Image en grand');
+  lb.innerHTML=`<div class="bar-l"><span class="mono" id="lb-c"></span><button class="btn-b" type="button" id="lb-x">Fermer</button></div><img id="lb-i" alt=""><div class="bar-l"><button class="btn-b" type="button" id="lb-p">← Précédente</button><span class="mono" id="lb-m"></span><button class="btn-b" type="button" id="lb-n">Suivante →</button></div>`;
+  document.body.appendChild(lb);document.body.style.overflow='hidden';
+  const show=j=>{i=(j+items.length)%items.length;const it=items[i];const im=lb.querySelector('#lb-i');im.classList.remove('ld');im.onload=()=>im.classList.add('ld');im.src=it.src;if(im.complete)im.classList.add('ld');new Image().src=items[(i+1)%items.length].src;im.alt=title+', '+fmtTime(it.t);
+    lb.querySelector('#lb-c').textContent=title+' · '+String(i+1).padStart(2,'0')+' / '+items.length+(it.ig?' · publiée sur Instagram':'');
+    lb.querySelector('#lb-m').textContent=fmtTime(it.t,true)+' · ISO '+it.iso+' · '+it.ss+' · f/'+it.f+' · '+it.fl+' mm';};
+  const close=()=>{lb.remove();document.body.style.overflow='';removeEventListener('keydown',key);};
+  const key=e=>{if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);};
+  lb.querySelector('#lb-x').onclick=close;lb.querySelector('#lb-p').onclick=()=>show(i-1);lb.querySelector('#lb-n').onclick=()=>show(i+1);
+  let sx=null;lb.addEventListener('pointerdown',e=>{sx=e.clientX;});lb.addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50)show(i+(dx<0?1:-1));});
+  addEventListener('keydown',key);show(i);lb.querySelector('#lb-x').focus();
+}
+
+/* ---------------- contact ---------------- */
+function copy(text,out){const done=m=>{out.textContent=m;setTimeout(()=>out.textContent='',2600);};
+  try{navigator.clipboard.writeText(text).then(()=>done('Copié.'),()=>done('Sélectionnez le texte et copiez-le.'));}catch(e){done('Sélectionnez le texte et copiez-le.');}}
+function initContact(){
+  const $=id=>document.getElementById(id);
+  const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const v=(id,ph)=>{const x=$(id).value.trim();return x?esc(x):`<span class="ph">${ph}</span>`;};
+  const upd=()=>{
+    const date=$('f-date').value?new Date($('f-date').value+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}):'<span class="ph">[date]</span>';
+    const needs=[...document.querySelectorAll('#needs input:checked')].map(x=>x.value);
+    const list=needs.length?(needs.length===1?needs[0]:needs.slice(0,-1).join(', ')+' et '+needs.at(-1)):'<span class="ph">[vos besoins]</span>';
+    $('msg').innerHTML=`Objet : ${$('f-type').value} · ${v('f-event','[événement]')} · ${v('f-place','[lieu]')}\n\nBonjour Matis,\n\n${v('f-org','[structure]')} organise ${v('f-event','[événement]')} le ${date} à ${v('f-place','[lieu]')}.\nNous aurions besoin de ${list}.\n\nÊtes-vous disponible ?\n\n${v('f-name','[votre nom]')}`;
+  };
+  $('brief').addEventListener('input',upd);$('brief').addEventListener('change',upd);$('brief').addEventListener('submit',e=>e.preventDefault());upd();
+  $('copy-mail').onclick=()=>copy('matis.rodrigues1@gmail.com',$('copied-mail'));
+  $('copy-msg').onclick=()=>copy($('msg').textContent,$('copied-msg'));
+}
+
+render(routeOf(location.hash));
+</script>
+
+</body></html>
